@@ -32,20 +32,33 @@ A production-ready **REST API** built with **Node.js & Express.js**, featuring a
 
 ```
 src/
-├── DB/
-│   ├── Models/          # Mongoose Schemas (User, Message)
-│   ├── Redis/           # Redis connection + repository
-│   └── database.repository.js  # Generic CRUD layer
-├── Modules/
-│   ├── Auth/            # Authentication flows
-│   ├── User/            # User management
-│   └── Message/         # Messaging system
-├── Middleware/          # Auth, Authorization, Validation, File Security
-└── Utils/
-    ├── Security/        # JWT + Encryption + Hashing
-    ├── Email/           # Nodemailer + HTML templates
-    ├── Events/          # Node.js EventEmitter (email events)
-    └── Errors/          # Custom error classes
+├── 🗄️  DB/
+│   ├── 📦 Models/              # Mongoose Schemas (User, Message, Google Provider)
+│   ├── ⚡ Redis/               # Redis connection + repository
+│   └── 📄 database.repository.js  # Generic CRUD layer (findById, updateOne...)
+│
+├── 📡 Modules/
+│   ├── 🔐 Auth/                # signup, signin, logout, refresh, OAuth, OTP
+│   ├── 👤 User/                # profile, password, freeze/unfreeze, hard-delete
+│   └── 💬 Message/             # send, get, admin view, user inbox
+│
+├── 🛡️  Middleware/
+│   ├── 🔑 auth.middleware.js        # decodeToken + authentication()
+│   ├── 🚦 authorization.js          # Role-based access control
+│   ├── 🔍 magicNumber.middleware.js # File byte-level verification
+│   ├── ✅ validation.middleware.js  # Joi schema validation
+│   └── 💥 Handler/globalError.handler.js
+│
+└── 🧰 Utils/
+    ├── 🔒 Security/            # JWT signing/verify, bcrypt, AES encryption
+    ├── 📧 Email/               # Nodemailer transporter + HTML template generator
+    ├── 📣 Events/              # Node.js EventEmitter (async email events)
+    ├── ❌ Errors/              # Custom error helpers (BadRequest, NotFound...)
+    ├── 📬 Res/                 # Standardized success/error response shapes
+    ├── 🏷️  Enums/              # Role, Token, Gender, Provider, Logout enums
+    ├── 📐 Validation/          # Joi general fields (email, password, id, OTP...)
+    ├── 🌐 Cors/                # CORS origin configuration
+    └── 📝 Logging/             # Morgan HTTP request logger
 ```
 
 ---
